@@ -11,13 +11,35 @@ class App extends Component{
     };  
   }
 
- 
+  handleNameChange = (e) => {
+    this.setState({
+      name: e.target.value
+    });
+  }
+
+  handleEmailChange = (e) => {
+    this.setState({
+      email: e.target.value
+    });
+  }
+
+  handlePhoneChange = (e) => {
+    this.setState({
+      phone: e.target.value
+    });
+  }
+
+  handleDateChange = (e) => {
+    this.setState({
+      date: e.target.value
+    });
+  }
 
 render(){
-  const { name, email, phone } = this.state;
+  const { name, email, phone, date } = this.state;
 
   return(
-    
+
     <div className='cvContainer'>
 
       <div className='cvHeader'>
@@ -26,24 +48,71 @@ render(){
 
       <div className='info'>
 
-      <form onSubmit={handleSubmit}>
+      <form>
         <div id='generalInfo'>
           <h4>General Information</h4>
-        <input value={name} type={'text'} id='taskInput' placeholder='First Name'/>
-        <input value={name} type={'text'} id='taskInput' placeholder='Last Name'/>
-        <input value={email} type={'email'} id='taskInput' placeholder='Email'/>
-        <input value={phone} type={'tel'} id='taskInput' placeholder='Phone Number'/>
+        <input 
+        onChange={this.handleNameChange}
+        value={name} 
+        type={'text'} 
+        id='taskInput' 
+        placeholder='First Name'
+        />
+        <input 
+        onChange={this.handleNameChange}
+        value={name} 
+        type={'text'} 
+        id='taskInput' 
+        placeholder='Last Name'
+        />
+        <input 
+        onChange={this.handleEmailChange}
+        value={email} 
+        type={'email'} 
+        id='taskInput' 
+        placeholder='Email'
+        />
+        <input 
+        onChange={this.handlePhoneChange}
+        value={phone} 
+        type={'tel'} 
+        id='taskInput' 
+        placeholder='Phone Number'
+        />
         </div>
+
         <div id='experience'>
           <h4>Experience</h4>
-          <input type={'text'} id='taskInput' placeholder='School Name' />
-          <input type={'text'} id='taskInput' placeholder='Title of Study' />
+          <input 
+          onChange={this.handleNameChange}
+          value={name}
+          type="text"
+          id='taskInput' 
+          placeholder='School Name' 
+          />
+          <input 
+          onChange={this.handleNameChange}
+          value={name} 
+          type={'text'} 
+          id='taskInput' 
+          placeholder='Title of Study' 
+          />
           <label className='start'/>
             <p>Start</p>
-            <input type={'date'} id='taskInput'/>
+            <input 
+            onChange={this.handleNameChange}
+            value={date} 
+            type={'date'} 
+            id='taskInput'
+            />
           <label className='end'>
             <p>End</p>
-            <input type={'date'} id='taskInput'/>
+            <input 
+            onChange={this.handleDateChange}
+            value={date} 
+            type={'date'} 
+            id='taskInput'
+            />
           </label>
         </div>
         </form>
