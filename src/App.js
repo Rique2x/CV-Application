@@ -1,22 +1,20 @@
 import React from 'react';
+import { BrowserRouter, Router, Route } from 'react-router-dom';
 import Home from './components/home';
-import Resume from './components/home';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
-
+import Resume from './components/resume'; // assuming CvForm component is in a separate file
 
 class App extends React.Component {
   render() {
     return (
-      <Router>
+      <BrowserRouter>
         <div>
           <h1>CV App</h1>
-          <Switch>
+          <Router>
             <Route exact path="/" component={Home} />
-            <Route exact path="/home" component={Home} />
-          </Switch>
+            <Route exact path="/cv-form" component={Resume} />
+          </Router>
         </div>
-      </Router>
+      </BrowserRouter>
     );
   }
 }
