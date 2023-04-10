@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 
 class App extends Component{
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
+
+    this.state = {
+      name: '',
+      email: '',
+      phone: '',
+    };  
   }
 
+ 
 
 render(){
+  const { name, email, phone } = this.state;
 
   return(
     <div className='cvContainer'>
@@ -14,13 +22,13 @@ render(){
         CV-Container
       </div>
       <div className='info'>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div id='generalInfo'>
           <h4>General Information</h4>
         <input type={'text'} id='taskInput' placeholder='First Name'/>
         <input type={'text'} id='taskInput' placeholder='Last Name'/>
         <input type={'email'} id='taskInput' placeholder='Email'/>
-        <input type={'number'} id='taskInput' placeholder='Phone Number'/>
+        <input type={'tel'} id='taskInput' placeholder='Phone Number'/>
         </div>
         <div id='experience'>
           <h4>Experience</h4>
