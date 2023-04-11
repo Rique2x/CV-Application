@@ -1,7 +1,9 @@
 import React from "react";
+import Loading from "./loading";
 
 
-class Resume extends React.Component{
+
+class CvForm extends React.Component{
     constructor(props){
       super(props)
   
@@ -35,7 +37,8 @@ class Resume extends React.Component{
     return(
   
       <div className='cvContainer'>
-  
+        
+        <Loading /> 
         <div className='cvHeader'>
           CV-Container
         </div>
@@ -45,6 +48,8 @@ class Resume extends React.Component{
         <form onSubmit={this.handleSubmit}>
           <div id='generalInfo'>
             <h4>General Information</h4>
+           
+         <label htmlFor="name">Name:</label>
           <input 
           onChange={this.handleChange}
           value={name} 
@@ -53,6 +58,8 @@ class Resume extends React.Component{
           placeholder='First Name'
           required
           />
+
+         <label htmlFor="lastName">Last-Name:</label>
           <input 
           onChange={this.handleChange}
           value={lastName} 
@@ -61,6 +68,8 @@ class Resume extends React.Component{
           placeholder='Last Name'
           required
           />
+
+          <label htmlFor="email">Email:</label>
           <input 
           onChange={this.handleChange}
           value={email} 
@@ -69,6 +78,8 @@ class Resume extends React.Component{
           placeholder='Email'
           required
           />
+
+         <label htmlFor="phone">Phone:</label>
           <input 
           onChange={this.handleChange}
           value={phone} 
@@ -125,4 +136,4 @@ class Resume extends React.Component{
   }
   }
   
-  export default Resume;
+  export default CvForm;
