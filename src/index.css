@@ -1,28 +1,50 @@
-body {
+* {
+  font-family: "Space Grotesk", sans-serif;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 .cvContainer{
   border: 1px solid;
+  max-width: 1200px;
   margin: 0 auto;
-  width: 500px;
-  border-radius: 10px;
 }
 
 .cvHeader{
-  border: 1px solid;
-  text-align: center;
   font-size: 2em;
+  text-align: center;
+}
+
+h4{
+  font-size: 1.2em;
+  text-align: center;
+  font-weight: 200;
+  margin-top: 30px;
 }
 
 .info{
-  border: 1px solid;
-  width: 300px;
-  margin: 0 auto;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  flex-direction: row;
+  margin-top: 30px;
 }
 
-#generalInfo, #experience{
-  text-align: center;
+.experience{
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  flex-direction: row;
+  margin-top: 30px;
+}
+
+label{
+  gap: 3px;
+  display: flex;
+  flex-direction: column;
+}
+
+input{
+  height: 40px;
 }
