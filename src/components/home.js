@@ -14,8 +14,18 @@ class Home extends React.Component{
       schoolName: '',
       study: '',
       isLoading: false, 
+      headshot: null,
     };  
   }
+
+  handleHeadshotChange = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      this.setState({ headshot: e.target.result });
+    };
+    reader.readAsDataURL(file);
+  };
 
   handleNameChange = (e) => {
     this.setState({
@@ -85,7 +95,7 @@ render(){
       <div className='cvHeader'>
         CV-Application
       </div>
-      
+
       {isLoading ? (
           <Loading /> // Render the Loading component when isLoading is true
         ) : (
@@ -178,9 +188,21 @@ render(){
             required
             />
           </label>
-          </div>     
+          <label htmlFor='photo'>Upload your headshot image
+                <input
+                    type='file'
+                    name='photo'
+                    required
+                    id='photo'
+                    accept='image/x-png,image/jpeg'
+                    onChange={this.handleHeadshotChange}
+                />
+                </label>
+                
+          </div> 
+          <h4><button>CREATE RESUME</button></h4>    
         </form>
-        )}
+        )};
       </div>
   )
 }
