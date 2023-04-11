@@ -1,6 +1,7 @@
 import React from "react";
+import Loading from "./loading";
 
-class App extends React.Component{
+class Home extends React.Component{
   constructor(props){
     super(props)
 
@@ -12,6 +13,7 @@ class App extends React.Component{
       lastName: '', 
       schoolName: '',
       study: '',
+      isLoading: false, 
     };  
   }
 
@@ -61,22 +63,34 @@ class App extends React.Component{
       isLoading: true 
     });
     e.preventDefault();
+   
+    setTimeout(() => {
+      // Set isLoading state to false after a delay (simulating API call or processing)
+      this.setState({ isLoading: false });
+      // Do something with the form data or handle success
+    }, 2000); // Delay for 2 seconds (for demonstration purposes)
   }
 
-
+  
+  
 render(){
   const { name, lastName, schoolName, study,
-    email, phone, date } = this.state;
+    email, phone, date, isLoading } = this.state;
 
   return(
 
     <div className='cvContainer'>
 
+
       <div className='cvHeader'>
         CV-Application
       </div>
+      
+      {isLoading ? (
+          <Loading /> // Render the Loading component when isLoading is true
+        ) : (
 
-      <form onChange={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit}>
         
           <h4>General Information</h4>
 
@@ -164,14 +178,12 @@ render(){
             required
             />
           </label>
-          </div>
-        
+          </div>     
         </form>
+        )}
       </div>
-     
-    
   )
 }
 }
 
-export default App;
+export default Home;
