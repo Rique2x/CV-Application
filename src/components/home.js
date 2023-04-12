@@ -83,21 +83,34 @@ class Home extends React.Component {
     }, 2000); // Delay for 2 seconds (for demonstration purposes)
   };
 
-  handleAddCompany = () =>
-    setCompanyInfo([...companyInfo, { name: "", position: "" }]);
+  handleAddCompany = () => {
+  const { jobDescriptions, setJobDescriptions }= this.state;
+  if (setJobDescriptions) {
+    this.setState({
+      jobDescriptions: [...jobDescriptions,  setJobDescriptions], // Add new job description to the workExperience array
+      setJobDescriptions: '', // Reset the newJobDescription state field
+    });
+  }
+}
 
   handleRemoveCompany = (index) => {
-    const list = [...companyInfo];
-    list.splice(index, 1);
-    setCompanyInfo(list);
-};
+    const {jobDescriptions}= this.state;
+    this.setState({
+      jobDescriptions: jobDescriptions.filter((job, i) => i !== index),
+    });
+  }
 
-handleUpdateCompany = (e, index) => {
-  const { name, value } = e.target;
-  const list = [...companyInfo];
-  list[index][name] = value;
-  setCompanyInfo(list);
-};
+handleUpdateCompany = (index, setJobDescriptions) => {
+  this.setState((prevState) => {
+  const updatedJobDescriptions = [...prevState.jobDescriptions];
+  updatedJobDescriptions[index] = setJobDescriptions;
+  return {
+    jobDescriptions: updatedJobDescriptions,
+  };
+});
+}
+
+
 
   render() {
     const { name, lastName, schoolName, study, email, phone, date, isLoading,
@@ -109,7 +122,7 @@ handleUpdateCompany = (e, index) => {
         <div className="cvHeader">CV-Application Generator</div>
         {isLoading ? (
           <Loading /> // Render the Loading component when isLoading is true
-        ) : (
+          ) : (
           <form onSubmit={this.handleSubmit}>
             <h4>General Information</h4>
 
@@ -234,12 +247,20 @@ handleUpdateCompany = (e, index) => {
               </label>
             </div>
 
-            <div className="app">
-              <h3>Companies you've worked at</h3>
-              <form>
-                {/*--- other UI tags --- */}
-                {companyInfo.map((company, index) => ( 
-                <div className="nestedContainer" key={index}>
+  
+              <h3>Companies you have worked at</h3>
+
+              <ul>
+  {jobDescriptions.map((job, index) => ( 
+    <li key={job.id}>
+      {index}
+       {/* Assuming job has an 'id' property */}
+      {job.description} {/* Assuming job has a 'description' property */}
+      <button type="button" onClick={() => this.handleRemoveJob(job.id)}>Remove</button> {/* Pass job.id as the argument */}
+    </li>
+  ))}
+</ul>
+                <div className="nestedContainer" >
                   <div className="companies">
                    <label htmlFor='name'>Company Name</label>
                    <input
@@ -262,22 +283,18 @@ handleUpdateCompany = (e, index) => {
                     </div>
 
                     <div className='btn__group'>
-                    {companyInfo.length - 1 === index && companyInfo.length < 4 && (
+                    {jobDescriptions.length - 1 ===  jobDescriptions.length < 4 && (
                             <button id='addBtn' onClick={this.handleAddCompany}>
                                 Add
                             </button>
                         )}
-                        {companyInfo.length > 1 && (
+                        {jobDescriptions.length > 1 && (
                             <button id='deleteBtn' onClick={this.handleRemoveCompany}>
                                 Del
                             </button>
                         )}
                     </div>
                 </div>
-                ))};
-              </form>
-
-            </div>
             <h4>
               <button>CREATE RESUME</button>
             </h4>
