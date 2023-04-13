@@ -15,8 +15,8 @@ class Home extends React.Component {
       study: "",
       isLoading: false,
       headshot: null,
-      jobDescriptions: { name: "", position: "" },
-      setJobDescriptions: { name: "", position: "" },
+      jobDescriptions:  [{ name: "", position: "" }],
+      setJobDescriptions: [],
     };
   }
 
@@ -84,20 +84,18 @@ class Home extends React.Component {
   };
 
   handleAddCompany = () => {
-  const { jobDescriptions, setJobDescriptions }= this.state;
-  if (setJobDescriptions) {
+    const { setJobDescriptions } = this.state;
     this.setState({
-      jobDescriptions: [...jobDescriptions,  setJobDescriptions], // Add new job description to the workExperience array
-      setJobDescriptions: '', // Reset the newJobDescription state field
+      
+      setJobDescriptions: [...setJobDescriptions, { name: "", position: "" }]
     });
-  }
 }
 
-  handleRemoveCompany = (index) => {
-    const {jobDescriptions}= this.state;
-    this.setState({
-      jobDescriptions: jobDescriptions.filter((job, i) => i !== index),
-    });
+handleRemoveCompany = (index) => {
+  const { jobDescriptions } = this.state;
+  const list = [...jobDescriptions];
+  list.splice(index, 1);
+  this.setState({ jobDescriptions: list });
   }
 
 handleUpdateCompany = (index, setJobDescriptions) => {
@@ -247,20 +245,14 @@ handleUpdateCompany = (index, setJobDescriptions) => {
               </label>
             </div>
 
-  
+            <div className='app'>
               <h3>Companies you have worked at</h3>
 
-              <ul>
-  {jobDescriptions.map((job, index) => ( 
-    <li key={job.id}>
-      {index}
-       {/* Assuming job has an 'id' property */}
-      {job.description} {/* Assuming job has a 'description' property */}
-      <button type="button" onClick={() => this.handleRemoveJob(job.id)}>Remove</button> {/* Pass job.id as the argument */}
-    </li>
-  ))}
-</ul>
-                <div className="nestedContainer" >
+              
+                  {jobDescriptions.map((job, index) => ( 
+                                 
+                <div className="nestedContainer" key={index}>
+                  
                   <div className="companies">
                    <label htmlFor='name'>Company Name</label>
                    <input
@@ -283,7 +275,7 @@ handleUpdateCompany = (index, setJobDescriptions) => {
                     </div>
 
                     <div className='btn__group'>
-                    {jobDescriptions.length - 1 ===  jobDescriptions.length < 4 && (
+                    {jobDescriptions.length - 1 === index && jobDescriptions.length < 4 && (
                             <button id='addBtn' onClick={this.handleAddCompany}>
                                 Add
                             </button>
@@ -295,9 +287,11 @@ handleUpdateCompany = (index, setJobDescriptions) => {
                         )}
                     </div>
                 </div>
+                ))}
             <h4>
               <button>CREATE RESUME</button>
             </h4>
+            </div>
           </form>
         )};
       </div>
