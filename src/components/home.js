@@ -84,10 +84,9 @@ class Home extends React.Component {
   };
 
   handleAddCompany = () => {
-    const { setJobDescriptions } = this.state;
+    const { jobDescriptions } = this.state;
     this.setState({
-      
-      setJobDescriptions: [...setJobDescriptions, { name: "", position: "" }]
+      jobDescriptions: [...jobDescriptions, { name: "", position: "" }]
     });
 }
 
@@ -112,7 +111,7 @@ handleUpdateCompany = (index, setJobDescriptions) => {
 
   render() {
     const { name, lastName, schoolName, study, email, phone, date, isLoading,
-       jobDescriptions, setJobDescriptions} =
+       jobDescriptions} =
       this.state;
 
     return (
@@ -258,7 +257,7 @@ handleUpdateCompany = (index, setJobDescriptions) => {
                    <input
                             type='text'
                             name='name'
-                            value={jobDescriptions}
+                          
                             required
                             onChange={this.handleUpdateCompany}
                         />
@@ -268,7 +267,7 @@ handleUpdateCompany = (index, setJobDescriptions) => {
                         <input
                             type='text'
                             name='position'
-                            value={setJobDescriptions}
+                            
                             required
                             onChange={this.handleUpdateCompany}
                         />
