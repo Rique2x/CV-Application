@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from 'prop-types';
 import ErrorPage from './errorpage';
 
 class CvForm extends React.Component {
@@ -30,9 +29,5 @@ class CvForm extends React.Component {
     );
   }
 }
-
-Resume.propTypes = {
-  result: PropTypes.object.isRequired,
-};
 
 export default CvForm
