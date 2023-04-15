@@ -1,77 +1,81 @@
 import React from "react";
-import ErrorPage from './errorpage';
 
-class CvForm extends React.Component {
+class CVForm extends React.Component {
   constructor(props) {
     super(props);
-    this.componentRef = React.createRef();
+    this.state = {
+      name: '',
+      email: '',
+      phone: '',
+      degree: '',
+      university: '',
+      year: '',
+      company: '',
+      position: '',
+      duration: ''
+    };
   }
 
-  replaceWithBr = (string) => {
-    return string.replace(/\n/g, "<br />");
-  };
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  }
 
-  handlePrint = () => {
-    alert('Print Successful!');
+  handleSubmit = (event) => {
+    event.preventDefault();
+    // You can handle form submission logic here, e.g. sending data to an API or storing in a database
+    console.log('Form data:', this.state);
   }
 
   render() {
-    const { result } = this.props;
-    if (JSON.stringify(result) === '{}') {
-      return <ErrorPage />;
-    }
-
     return (
-      <>
-        <button onClick={this.handlePrint}>Print Page</button>
-        <main className='container' ref={this.componentRef}>
-        <header className='header'>
-            <div>
-              <h1>{result.fullName}</h1>
-              <p className='resumeTitle headerTitle'>
-                {result.currentPosition} ({result.currentTechnologies})
-              </p>
-              <p className='resumeTitle'>{result.currentLength} year(s) work experience</p>
-            </div>
-            <div>
-              <img src={result.image_url} alt={result.fullName} className='resumeImage' />
-            </div>
-          </header>
-          <div className='resumeBody'>
-            <div>
-              <h2 className='resumeBodyTitle'>PROFILE SUMMARY</h2>
-              <p
-                dangerouslySetInnerHTML={{ __html: this.replaceWithBr(result.objective) }}
-                className='resumeBodyContent'
-              />
-            </div>
-            <div>
-              <h2 className='resumeBodyTitle'>WORK HISTORY</h2>
-              {result.workHistory.map((work) => (
-                <p className='resumeBodyContent' key={work.name}>
-                  <span style={{ fontWeight: "bold" }}>{work.name}</span> - {work.position}
-                </p>
-              ))}
-            </div>
-            <div>
-              <h2 className='resumeBodyTitle'>JOB PROFILE</h2>
-              <p
-                dangerouslySetInnerHTML={{ __html: this.replaceWithBr(result.jobResponsibilities) }}
-                className='resumeBodyContent'
-              />
-            </div>
-            <div>
-              <h2 className='resumeBodyTitle'>JOB RESPONSIBILITIES</h2>
-              <p
-                dangerouslySetInnerHTML={{ __html: this.replaceWithBr(result.keypoints) }}
-                className='resumeBodyContent'
-              />
-            </div>
-          </div>
-        </main>
-      </>
+      <div>
+        <h2>CV Form</h2>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Name:
+            <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
+          </label>
+          <label>
+            Email:
+            <input type="email" name="email" value={this.state.email} onChange={this.handleChange} />
+          </label>
+          <label>
+            Phone:
+            <input type="tel" name="phone" value={this.state.phone} onChange={this.handleChange} />
+          </label>
+          <h3>Education</h3>
+          <label>
+            Degree:
+            <input type="text" name="degree" value={this.state.degree} onChange={this.handleChange} />
+          </label>
+          <label>
+            University:
+            <input type="text" name="university" value={this.state.university} onChange={this.handleChange} />
+          </label>
+          <label>
+            Year:
+            <input type="text" name="year" value={this.state.year} onChange={this.handleChange} />
+          </label>
+          <h3>Experience</h3>
+          <label>
+            Company:
+            <input type="text" name="company" value={this.state.company} onChange={this.handleChange} />
+          </label>
+          <label>
+            Position:
+            <input type="text" name="position" value={this.state.position} onChange={this.handleChange} />
+          </label>
+          <label>
+            Duration:
+            <input type="text" name="duration" value={this.state.duration} onChange={this.handleChange} />
+          </label>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     );
   }
 }
 
-export default CvForm
+
+export default CVForm

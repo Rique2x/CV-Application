@@ -125,7 +125,6 @@ handleUpdateCompany = (index, setJobDescriptions) => {
 
             <div className="info">
               <label htmlFor="name">
-                {" "}
                 First-Name:
                 <input
                   onChange={this.handleNameChange}
@@ -138,7 +137,6 @@ handleUpdateCompany = (index, setJobDescriptions) => {
               </label>
 
               <label htmlFor="lastName">
-                {" "}
                 Last-Name:
                 <input
                   onChange={this.handleLastNameChange}
@@ -150,8 +148,7 @@ handleUpdateCompany = (index, setJobDescriptions) => {
                 />
               </label>
 
-              <label htmlFor="lastName">
-                {" "}
+              <label htmlFor="email">
                 Email:
                 <input
                   onChange={this.handleEmailChange}
@@ -163,8 +160,7 @@ handleUpdateCompany = (index, setJobDescriptions) => {
                 />
               </label>
 
-              <label htmlFor="lastName">
-                {" "}
+              <label htmlFor="phone">
                 Phone-Number:
                 <input
                   onChange={this.handlePhoneChange}
@@ -180,8 +176,7 @@ handleUpdateCompany = (index, setJobDescriptions) => {
             <h4>Experience</h4>
 
             <div className="experience">
-              <label htmlFor="lastName">
-                {" "}
+              <label htmlFor="schoolName">
                 School-Name:
                 <input
                   onChange={this.handleSchoolNameChange}
@@ -193,8 +188,7 @@ handleUpdateCompany = (index, setJobDescriptions) => {
                 />
               </label>
 
-              <label htmlFor="lastName">
-                {" "}
+              <label htmlFor="study">
                 Title of Study:
                 <input
                   onChange={this.handleStudyChange}
@@ -206,8 +200,7 @@ handleUpdateCompany = (index, setJobDescriptions) => {
                 />
               </label>
 
-              <label htmlFor="lastName">
-                {" "}
+              <label htmlFor="date">
                 Start:
                 <input
                   onChange={this.handleDateChange}
@@ -219,8 +212,7 @@ handleUpdateCompany = (index, setJobDescriptions) => {
                 />
               </label>
 
-              <label htmlFor="lastName">
-                {" "}
+              <label htmlFor="date">
                 End:
                 <input
                   onChange={this.handleDateChange}
@@ -231,7 +223,7 @@ handleUpdateCompany = (index, setJobDescriptions) => {
                   required
                 />
               </label>
-              <label htmlFor="photo">
+              <label>
                 Upload your headshot image
                 <input
                   type="file"

@@ -1,23 +1,16 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './components/home';
 import CvForm from './components/cv-form'; // assuming CvForm component is in a separate file
 
 
-const App = () => {
+class App extends React.Component {
+  render() {
     return (
-        <div>
-           <BrowserRouter>
-
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route exact path="/cv-form" element={<CvForm />} />
-          </Routes>
-
-          </BrowserRouter>
-        </div>
+      <div>
+        <h1>Welcome to My CV App</h1>
+        <CvForm />
+      </div>
     );
   }
-
+}
 
 export default App;
