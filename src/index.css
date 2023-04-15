@@ -1,69 +1,143 @@
- @import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@1,500&display=swap');
- @import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap');
 
-input,
-button {
-  margin: 0;
-  padding: 0;
-  border: none;
-  outline: none;
+@media print {
+  .no-print {
+      display: none;
+  }
 }
 
-/* Container for the CV form */
-.cv-form-container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f5f5f5;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-/* Heading styles */
-h2 {
-  margin-bottom: 20px;
-  font-size: 24px;
-  color: #333;
-  text-align: center;
-  font-family: 'Schibsted Grotesk', sans-serif;
+body {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  font-size: 1.25rem;
 }
 
 h1 {
-  margin-bottom: 20px;
-  font-size: 44px;
   color: rgb(0, 0, 0);
-  text-align: center;
   font-family: 'Schibsted Grotesk', sans-serif;
 }
 
-/* Form field styles */
+h3 {
+
+  font-family: 'Schibsted Grotesk', sans-serif;
+  margin: 15px;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#components {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 40px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 20px rgba(143, 142, 142, 0.5); /* Add blurry box shadow */
+}
+
+#components > div > form > div {
+  display: flex;
+  flex-direction: row;
+}
+
+#components > div > form > div > div{
+  display: flex;
+  flex-direction: column;
+  margin-right: 40px;
+}
+
+
+#components > div > div > div{
+  display: flex;
+  flex-direction: column;
+  margin-right: 40px;
+}
+
 label {
-  display: block;
+  margin-right: 20px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.7em;
+}
+
+input {
+  width: 200px;
+  margin-top: 5px;
   margin-bottom: 10px;
-  font-size: 16px;
-  color: #777;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="tel"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 3px;
+.date {
+  width: 203px;
 }
 
-/* Submit button styles */
-button[type="submit"] {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #007bff;
+textarea {
+  height: 100px;
+  width: 450px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding-left: auto;
+  padding-right: auto;
+  width: 100px;
+  height: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#button {
+  margin: 0 auto;
   border: none;
-  border-radius: 3px;
-  cursor: pointer;
+  background-color: rgb(217, 248, 159);
+}
+
+#button:hover {
+  opacity: 0.8; 
+  transform: scale(1.05); 
+  cursor: pointer; 
+  transition: 0.3s;
+}
+
+#added-experience {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+#added-experience {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.added-experience-component {
+  margin: 0px;
+}
+
+.tasks {
+  inline-size: 500px;
+  overflow-wrap: break-word; 
+}
+
+#general-info-edit > div{
+  display: flex;
+  flex-direction: row;
+}
+
+#general-info-edit > div > div{
+  display: flex;
+  flex-direction: column;
+}
+
+#general-info-save {
+  display: block;
 }

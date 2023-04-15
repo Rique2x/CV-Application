@@ -1,13 +1,19 @@
-import React from 'react';
-import CvForm from './components/cv-form'; // assuming CvForm component is in a separate file
+import React, { Component } from 'react';
+import GeneralInfo from './components/GeneralInfo';
+import Experience from './components/Experience';
+import Education from './components/Education';
 
-
-class App extends React.Component {
+class App extends Component {
   render() {
     return (
-      <div>
-        <h1>Welcome to My CV App</h1>
-        <CvForm />
+      <div id='container'>
+        <h1 className="no-print">Welcome to My CV App</h1>
+        <div id="components" className="no-print">
+                  <GeneralInfo />
+                  <Experience />
+                  <Education />
+                  <button id="button"  className="no-print" onClick={() => {window.print()}}>Print to PDF</button>
+                </div>
       </div>
     );
   }
