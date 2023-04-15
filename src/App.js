@@ -7,7 +7,9 @@ class App extends Component {
   render() {
     return (
       <div id='container'>
-        <h1 className="no-print">Welcome to My CV App</h1>
+        <div className='title'>
+          <h1 className="no-print">CV Application</h1>
+        </div>
         <div id="components" className="no-print">
                   <GeneralInfo />
                   <Experience />
