@@ -23,14 +23,24 @@ class CVForm extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    if (this.state.name === '') {
+      this.setState({ error: 'Name is required!' }); // setting error message in state
+    } else {
     // You can handle form submission logic here, e.g. sending data to an API or storing in a database
+    this.setState({ error: null });
+    // Handle form submission logic here
     console.log('Form data:', this.state);
   }
+}
 
   render() {
+
+    const { error } = this.state; // getting error state from component state
+
     return (
       <div>
         <h2>CV Form</h2>
+        {error && <p style={{ color: 'red' }}>{error}</p>} {/* render error message if error state is not null */}
         <form onSubmit={this.handleSubmit}>
           <label>
             Name:
