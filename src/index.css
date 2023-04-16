@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;1,500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@1,500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&display=swap');
 
 @media print {
   .no-print {
@@ -9,7 +10,9 @@
 }
 
 body {
-  background-color: rgb(233, 237, 201);
+  background: #DAE2F8;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #D6A4A4, #DAE2F8);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #D6A4A4, #DAE2F8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   display: flex;
   justify-content: center;
   font-size: 1.25rem;
@@ -18,8 +21,8 @@ body {
 }
 
 h1 {
-  color: rgb(255, 255, 255);
-  font-family: 'Schibsted Grotesk', sans-serif;
+  color: rgb(0, 0, 0);
+  font-family: 'Carter One', cursive;
 }
 
 h3 {
@@ -30,14 +33,7 @@ h3 {
  
 }
 
-.title{
-  border: 1px solid;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: center;
-  width: 1400px;
-  background-color: black;
-}
+
 
 #container {
   display: flex;
@@ -46,6 +42,7 @@ h3 {
 }
 
 #components {
+  border-radius: 10px;
   width: 1000px;
   display: flex;
   flex-direction: column;
@@ -84,7 +81,6 @@ label {
 }
 
 input {
-  border: 1px solid;
   width: 450px;
   height: 30px;
   margin-top: 5px;

@@ -7,9 +7,7 @@ class App extends Component {
   render() {
     return (
       <div id='container'>
-        <div className='title'>
           <h1 className="no-print">CV Application</h1>
-        </div>
         <div id="components" className="no-print">
                   <GeneralInfo />
                   <Experience />
