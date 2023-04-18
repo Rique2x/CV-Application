@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import GeneralInfo from './components/GeneralInfo';
 import Experience from './components/Experience';
 import Education from './components/Education';
 
-class App extends Component {
-  render() {
+const App = () => {
+  
     return (
       <div id='container'>
           <h1 className="no-print">CV Application</h1>
@@ -17,6 +17,6 @@ class App extends Component {
       </div>
     );
   }
-}
+
 
 export default App;
