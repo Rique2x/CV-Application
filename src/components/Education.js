@@ -1,42 +1,36 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 
 import AddedEducation from './AddedEducation'; 
 
-export default class Education extends Component {
+const Education = () => {
 
-    constructor(props) {
-        super(props);
+    const [ education, setEducation] = useState({
+      institution: '',
+      fieldOfFocus: '',
+      dateFrom: '',
+      dateTo: '',
+    });
+    const [allEducation, setAllEducation] = useState([]);
 
-        this.state = {
-            education: {
-
-                institution: '',
-                fieldOfFocus: '',
-                dateFrom: '',
-                dateTo: '',
-            },
-            allEducation: []
-        }
-    }
-
-    handleInstitutionChange = event => {
-        this.setState((prevState) => ({
+    const handleInstitutionChange = (event) => {
+        setEducation((prevState) => ({
             education: {
               ...prevState.education,
               institution: event.target.value
             },
           }));
     }
-    handleFieldOfFocusChange = event => {
-        this.setState((prevState) => ({
+
+    const handleFieldOfFocusChange = event => {
+        setEducation((prevState) => ({
             education: {
               ...prevState.education,
               fieldOfFocus: event.target.value
             },
           }));
     }
-    handleDateFromChange = (event) => {
-        this.setState((prevState) => ({
+    const handleDateFromChange = (event) => {
+        setEducation((prevState) => ({
           education: {
             ...prevState.education,
             dateFrom: event.target.value
@@ -44,8 +38,8 @@ export default class Education extends Component {
         }));
       };
     
-      handleDateToChange = (event) => {
-        this.setState((prevState) => ({
+    const handleDateToChange = (event) => {
+        setEducation((prevState) => ({
           education: {
             ...prevState.education,
             dateTo: event.target.value
@@ -53,9 +47,10 @@ export default class Education extends Component {
         }));
       };
 
-    onSubmitEducation = event => {
+    const onSubmitEducation = event => {
         event.preventDefault();
-        this.setState((prevState) => ({
+        setAllEducation(prevState => [...prevState, education]);
+        setEducation((prevState) => ({
           allEducation: [...prevState.allEducation, prevState.education],
             education: {
          
@@ -67,44 +62,44 @@ export default class Education extends Component {
         }));
       };
 
-      deleteEducation = (index) => {
-        this.setState((prevState) => ({
+      const deleteEducation = (index) => {
+        setEducation((prevState) => ({
           allEducation: prevState.allEducation.filter((education, i) => i !== index),
         }));
       };
 
 
-    render() {
         return (
             <div className="education">
                 <h3>Education</h3>
                 <div id="added-education">
-                  <AddedEducation allEducation={this.state.allEducation} deleteEducation={this.deleteEducation}/>
+                  <AddedEducation allEducation={allEducation} deleteEducation={deleteEducation}/>
                 </div>
-                <form onSubmit={this.onSubmitEducation} className="no-print">
+                <form onSubmit={onSubmitEducation} className="no-print">
                     <div>
                         <div>
                             <label>Institution:</label>
-                            <input type="text" value={this.state.education.institution} onChange={this.handleInstitutionChange}></input>
+                            <input type="text" value={education.institution} onChange={handleInstitutionChange}></input>
                         </div>
                         <div>
                             <label>Field of Focus:</label>
-                            <input type="text" value={this.state.education.fieldOfFocus} onChange={this.handleFieldOfFocusChange}></input>
+                            <input type="text" value={education.fieldOfFocus} onChange={handleFieldOfFocusChange}></input>
                         </div>
                     </div>
                     <div>
                         <div>
                             <label>From:</label>
-                            <input className="date" type="date" value={this.state.education.dateFrom} onChange={this.handleDateFromChange}></input>
+                            <input className="date" type="date" value={education.dateFrom} onChange={handleDateFromChange}></input>
                         </div>
                         <div>
                             <label>To:</label>
-                            <input className="date" type="date" value={this.state.education.dateTo} onChange={this.handleDateToChange}></input>
+                            <input className="date" type="date" value={education.dateTo} onChange={handleDateToChange}></input>
                         </div>
                     </div>
                     <button id="add-education" className="no-print" type="submit">Save</button>
                 </form>
             </div>
         )
-    }
 }
+
+export default Education;
